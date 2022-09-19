@@ -13,6 +13,7 @@ public class CreditApplication {
     private long id;
 
     private long iin;
+
     private Date dateOfTheApplication;
 
     private long sum;

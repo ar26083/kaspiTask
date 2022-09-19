@@ -1,24 +1,25 @@
 package com.example.kaspitask.controllers;
 
-import com.example.kaspitask.dto.UserAnswerDTO;
 import com.example.kaspitask.dto.UserLoginDTO;
 import com.example.kaspitask.services.UserSevice;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 @RequiredArgsConstructor
 public class UserController {
 
-    private final PasswordEncoder encoder;
-
     private final UserSevice userSevice;
 
-    @GetMapping("/login")
-    public String login(@RequestBody UserLoginDTO userDTO) {
-        return "static/" + (userSevice.userLoginChecker(userDTO) ? "iinPage.html" : "index.html");
+    @GetMapping( "/login")
+    @ResponseBody
+    public String login(@RequestBody UserLoginDTO userLoginDTO) {
+        //return new ModelAndView((userSevice.userLoginChecker(login, password) ? "templates/iinPage.html" : "templates/invalidators.html"));
+        return (userSevice.userLoginChecker(userLoginDTO.getLogin(), userLoginDTO.getPassword()) ? "iinPage" : "invalidators");
     }
 
     

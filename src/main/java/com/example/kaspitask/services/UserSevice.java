@@ -16,9 +16,11 @@ public class UserSevice {
 
     private final PasswordEncoder encoder;
 
-    public boolean userLoginChecker(UserLoginDTO userDTO){
-        User user = userRepo.findByLogin(userDTO.getLogin());
-        if (encoder.matches(userDTO.getPassword(), user.getPassword()) && user.getLogin().equals(userDTO.getLogin())) {
+    public boolean userLoginChecker(String login, String password){
+        if (login == null || login.equals("") || password == null || password.equals(""))
+            return false;
+        User user = userRepo.findByLogin(login);
+        if (encoder.matches(password, user.getPassword()) && user.getLogin().equals(login)) {
             return true;
         }
         return false;
