@@ -12,6 +12,7 @@ public class CreditApplication {
     @Id
     private long id;
 
+    private long iin;
     private Date dateOfTheApplication;
 
     private long sum;

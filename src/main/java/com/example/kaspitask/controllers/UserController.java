@@ -6,10 +6,7 @@ import com.example.kaspitask.services.UserSevice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,10 +16,9 @@ public class UserController {
 
     private final UserSevice userSevice;
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserLoginDTO userDTO) {
-        UserAnswerDTO userAnswerDTO = userSevice.userLoginChecker(userDTO);
-        return ResponseEntity.ok(userAnswerDTO);
+    @GetMapping("/login")
+    public String login(@RequestBody UserLoginDTO userDTO) {
+        return "static/" + (userSevice.userLoginChecker(userDTO) ? "iinPage.html" : "index.html");
     }
 
     

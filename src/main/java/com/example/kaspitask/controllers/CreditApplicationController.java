@@ -18,4 +18,6 @@ public class CreditApplicationController {
         CreditApplicationAnswerDTO creditAnswerDTO = null;
         return ResponseEntity.ok(creditAnswerDTO);
     }
+
+
 }

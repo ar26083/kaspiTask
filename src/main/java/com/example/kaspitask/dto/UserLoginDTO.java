@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class UserLoginDTO {
 
-    @NotNull(message = "Введите корректный мэйл")
+    @NotNull(message = "Введите корректный логин")
     private String login;
 
     @NotNull(message = "Введите пароль")
