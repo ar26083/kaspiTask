@@ -1,0 +1,2 @@
+# kaspiTask
+//pswd amdin admin
